@@ -1,4 +1,4 @@
-# Module: Twitter Trends By Place
+# Module: Tweets By Timeline Or List
 The `MMM-TweetsByTimelineOrList` module is a module designed to display tweets from a user's home timeline or from a list. The tweets show can be configured in a variety of ways and are shown in a slideshow like fashion, showing just a few and then rotating into the next set.
 
 Example:
