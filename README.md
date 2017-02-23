@@ -27,7 +27,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 ````javascript
 modules: [
 	{
-		module: 'MMM-TwitterTrendsByPlace',
+		module: 'MMM-TweetsByTimelineOrList',
 		position: 'bottom_left',
 		config: {
 		// visit the url below for the twitter keys/tokens
