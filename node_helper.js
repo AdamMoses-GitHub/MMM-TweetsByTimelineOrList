@@ -62,6 +62,18 @@ module.exports = NodeHelper.create({
             cTextClean = cTextClean.substr(0, cTextClean.length - 1);
         return cTextClean;
     },
+    // checks that a given tweet's text has the config text match met
+    // uses the excludeTweetsWithoutText config array option
+    doesNotHaveRequiredText: function(theText, theConfig) {
+    	var theTextL = theText.toLowerCase();
+    	var excludeTweetsWithoutText = theConfig.excludeTweetsWithoutText;
+    	for (cIndex = 0; cIndex < excludeTweetsWithoutText.length; cIndex++) {
+    		var cTextMatch = excludeTweetsWithoutText[cIndex].toLowerCase();
+    		if (theTextL.indexOf(cTextMatch) > -1)
+    			return false;
+    	}
+    	return true;
+    },
     // parses the received tweets and send back to module
     parseTweets: function(theConfig, tweets) {
           var includedTweetList = [ ];          
@@ -110,7 +122,11 @@ module.exports = NodeHelper.create({
               // if set to tweet age is set and greater than that, exclude
               if ( (theConfig.maxTweetAgeMins > 0) && 
                     (cTweetAgeMins > theConfig.maxTweetAgeMins) )
-                    doInclude = false;                    
+                    doInclude = false;
+              // if set to check for certain text matches, exclude those that don't
+              if ( (theConfig.excludeTweetsWithoutText.length > 0) &&
+            		  (this.doesNotHaveRequiredText(cText, theConfig)) )
+            	  	doInclude = false;
               // if not included for some reason, include it
               if (doInclude)
               {

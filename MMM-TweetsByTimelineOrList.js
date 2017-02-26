@@ -34,6 +34,7 @@ Module.register("MMM-TweetsByTimelineOrList", {
         excludeMediaTweets: false,
         excludeLinkTweets: false,
         excludeTweetLengthLessThan: 16,
+        excludeTweetsWithoutText: [ ],
         maxTweetsPerUser: 1,
         maxTweetAgeMins: 360,
         tweetHighlightStyle: 1,        

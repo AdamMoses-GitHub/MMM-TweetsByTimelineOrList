@@ -80,6 +80,18 @@ The following properties can be configured:
 			<td>Used by the Twitter package in order to collect the trends. For more visit <a href="https://dev.twitter.com/oauth/overview/application-owner-access-tokens">https://dev.twitter.com/oauth/overview/application-owner-access-tokens</a>.<br>
 			<br>This value is <b>REQUIRED</b>
 			</td>
+		</tr>			
+		<tr>
+			<td><code>screenName</code></td>
+			<td>Should be set to either a) your username if you want to show your TIMELINE or one of your user lists, or b) another username if accessing one of their user lists.<br>
+			<br>This value is <b>REQUIRED</b>
+			</td>
+		</tr>	
+		<tr>
+			<td><code>listToShow</code></td>
+			<td>Should be set to either a) 'TIMELINE', if you want to show your timeline, or b) the stub name of one of your user lists or another user's user lists. This is configured tightly with the above <code>screenName</code> configuratoin option so set accordingly.<br>
+			<br>This value is <b>REQUIRED</b>
+			</td>
 		</tr>	
 		<tr>
 			<td><code>tweetsToShowAtATime</code></td>
@@ -112,8 +124,7 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>'300px'</code>
 				<br>This value is <b>OPTIONAL</b>
 			</td>
-		</tr>				
-		
+		</tr>						
 		<tr>
 			<td><code>animationSpeed</code></td>
 			<td>The animation speed sent to updateDom to fade in between new sets of on-screen tweets.<br>
@@ -177,7 +188,15 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>16</code>
 				<br>This value is <b>OPTIONAL</b>
 			</td>
-		</tr>					
+		</tr>	
+		<tr>
+			<td><code>excludeTweetsWithoutText</code></td>
+			<td>This is an array of strings that are checked against a given tweet. If a tweet includes any of the strings in the array than it would be included, otherwise it is excluded. If an empty array is specified than no checking of this kind will occur at all. NOTE: This compairison is made case insensitive.<br>
+				<br><b>Example:</b> <code>[ 'elephants', 'deer' ]</code>
+				<br><b>Default value:</b> <code>[ ]</code>
+				<br>This value is <b>OPTIONAL</b>
+			</td>
+		</tr>	
 		<tr>
 			<td><code>maxTweetsPerUser</code></td>
 			<td>Limits the number of tweets any one user can have dispalyed, preventing one user from taking up many many of the displayed tweets. If set to zero, no limiting will occur at all.<br>
