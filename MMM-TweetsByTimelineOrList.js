@@ -90,7 +90,7 @@ Module.register("MMM-TweetsByTimelineOrList", {
 		}
         // if sent error notice
         if (notification === "TWEETS_TOO_MANY_ERRORS") {
-            this.errorMessage("There was an error.");
+            this.errorMessage = "There was an error.";
             if (this.updateTimer !== null)
                 clearTimeout(this.updateTimer);
             this.updateTimer = null;
