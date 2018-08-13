@@ -51,10 +51,11 @@ module.exports = NodeHelper.create({
     },    
     // return clean tweet text / name
     // removes all urls, newlines, eol :'s, and multi-spaces
-    cleanString: function(theString) {
+    cleanString: function(theString, theConfig) {
         var cTextClean = theString;
         cTextClean = cTextClean.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');          
-        cTextClean = cTextClean.replace(/[^\x00-\x7F]/g, '');
+        if (!theConfig.allowSpecialCharacters)
+			cTextClean = cTextClean.replace(/[^\x00-\x7F]/g, '');
         cTextClean = cTextClean.replace(/\n/g, ' ');
         cTextClean = cTextClean.replace(/\s+/g, ' ');
         cTextClean = cTextClean.trim();
@@ -83,10 +84,10 @@ module.exports = NodeHelper.create({
           {
               // break out all the tweet components
               var cTweet = tweets[cIndex];
-              var cText = this.cleanString(cTweet.text);
+              var cText = this.cleanString(cTweet.text, theConfig);
               var cTimestamp = cTweet.created_at;
               var cTweetAgeMins = Math.round((nowTime - Date.parse(cTimestamp)) / (1000 * 60));
-              var cUserFullName = this.cleanString(cTweet.user.name);
+              var cUserFullName = this.cleanString(cTweet.user.name, theConfig);
               var cUserScreenName = cTweet.user.screen_name;
               var cIsQuoteStatus = cTweet.is_quote_status;
               var cIsRetweeted = (cTweet.retweeted_status !== undefined);

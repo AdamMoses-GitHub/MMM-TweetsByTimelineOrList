@@ -213,5 +213,13 @@ The following properties can be configured:
 				<br>This value is <b>OPTIONAL</b>
 			</td>
 		</tr>
+		<tr>
+			<td><code>allowSpecialCharacters</code></td>
+			<td>Determines if non-alphanumerics will be allowed in the display string or not. If set to true Unicode characters that are outside regular English will be allowed in, characters that feature an Umlaute over them for instance. These are typically found in non-English languages, like German. This also may allow in unwanted characters however, like those that are featured as part of an emoji. The code currently does not discriminate here. For most English users this value should remain false.<br>
+				<br><b>Example:</b> <code>true</code>
+				<br><b>Default value:</b> <code>false</code>
+				<br>This value is <b>OPTIONAL</b>
+			</td>
+		</tr>		
 	</tbody>
 </table>

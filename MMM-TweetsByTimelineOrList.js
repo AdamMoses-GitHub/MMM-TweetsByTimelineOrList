@@ -37,7 +37,8 @@ Module.register("MMM-TweetsByTimelineOrList", {
         excludeTweetsWithoutText: [ ],
         maxTweetsPerUser: 1,
         maxTweetAgeMins: 360,
-        tweetHighlightStyle: 1,        
+        tweetHighlightStyle: 1,  
+		allowSpecialCharacters: false,
 	},
 	// the start function
 	start: function() {
