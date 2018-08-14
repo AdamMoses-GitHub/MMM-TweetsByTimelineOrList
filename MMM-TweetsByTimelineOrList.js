@@ -37,8 +37,8 @@ Module.register("MMM-TweetsByTimelineOrList", {
         excludeTweetsWithoutText: [ ],
         maxTweetsPerUser: 1,
         maxTweetAgeMins: 360,
-        tweetHighlightStyle: 1,  
 		allowSpecialCharacters: false,
+		displayColors: [ '#888', '#aaa', ],
 	},
 	// the start function
 	start: function() {
@@ -152,9 +152,8 @@ Module.register("MMM-TweetsByTimelineOrList", {
 		var currentDisplayTweets = this.getTweetsToShow();
 		for (var cIndex = 0; cIndex < currentDisplayTweets.length; cIndex++){
             var tweet = currentDisplayTweets[cIndex];
-            var colorValue = "color:#888";
-            if ((cIndex % 2) == 1)
-                colorValue = "color:#aaa;";	
+            var colorValue = "color:" + 
+							this.config.displayColors[cIndex % this.config.displayColors.length];
 			var tweetTR = document.createElement("tr");    
    			var tweetTD = document.createElement("td");
   			tweetTD.align = "right";

@@ -220,6 +220,14 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>false</code>
 				<br>This value is <b>OPTIONAL</b>
 			</td>
+		</tr>
+		<tr>
+			<td><code>displayColors</code></td>
+			<td>A list of strings, where each string is a color in the '#RGB' format. The displayed tweets will be displayed in order of the colors listed, cycling through them as needed based on the number of tweets shown.<br>
+				<br><b>Example:</b> <code>[ '#e00', '#0e0', '#00e']</code>
+				<br><b>Default value:</b> <code>[ '#888', '#aaa', ]</code> (darker grey, lighter grey)
+				<br>This value is <b>OPTIONAL</b>
+			</td>
 		</tr>		
 	</tbody>
 </table>
