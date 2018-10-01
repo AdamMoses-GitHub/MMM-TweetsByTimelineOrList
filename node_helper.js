@@ -14,6 +14,9 @@
 // call in the required classes
 var NodeHelper = require("node_helper");
 var Twitter = require("twitter");
+var Filter = require("bad-words");
+var filter = new Filter();
+
 // the main module helper create
 module.exports = NodeHelper.create({
     // subclass start method, clears the initial config array
@@ -61,6 +64,8 @@ module.exports = NodeHelper.create({
         cTextClean = cTextClean.trim();
         if (cTextClean.endsWith(':'))
             cTextClean = cTextClean.substr(0, cTextClean.length - 1);
+        if (!!theConfig.filterBadWords)
+            cTextClean = filter.clean(cTextClean);
         return cTextClean;
     },
     // checks that a given tweet's text has the config text match met
