@@ -7,7 +7,14 @@ Example:
 
 ## Dependencies / Requirements
 
-This module requires the use of the `twitter` package for node.js. To install this please run `npm install twitter` from the MMM-TweetsByTimelineOrList module directory inside your Magic Mirror installation directory.
+This module requires the use of the `twitter` and `bad-words` packages for node.js. To install them, please run:
+
+```
+npm install twitter
+npm install bad-words
+```
+
+from the `MMM-TweetsByTimelineOrList` module directory inside your Magic Mirror installation directory.
 
 This module also requires Twitter access tokens and keys. For more information on acquiring these please visit <https://dev.twitter.com/oauth/overview/application-owner-access-tokens>.
 
@@ -229,5 +236,9 @@ The following properties can be configured:
 				<br>This value is <b>OPTIONAL</b>
 			</td>
 		</tr>		
+		<tr>
+			<td><code>filterBadWords</code></td>
+			<td>Defaults to `false`.  When set to `true`, objectionable words are replaced with asterisks for a more child-friendly display.</td>
+		</tr>
 	</tbody>
 </table>
