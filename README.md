@@ -18,7 +18,7 @@ from the `MMM-TweetsByTimelineOrList` module directory inside your Magic Mirror 
 
 This module also requires Twitter access tokens and keys. For more information on acquiring these please visit <https://dev.twitter.com/oauth/overview/application-owner-access-tokens>.
 
-## Operation
+## Operation 
 
 This module displays a number of tweets at time in a row by row fashion with the tweet's full username and age of the tweet also being display. Tweets are set in alternating gray-level colors to distinguish them.
 
