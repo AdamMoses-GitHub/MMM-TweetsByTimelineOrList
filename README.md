@@ -10,7 +10,7 @@ Example:
 This module requires the use of the `twitter` and `bad-words` packages for node.js. To install them, please run:
 
 ```
-npm install twitter
+npm install twitter 
 npm install bad-words
 ```
 
@@ -24,7 +24,7 @@ This module displays a number of tweets at time in a row by row fashion with the
 
 Tweets that are displayed have all links, media, quotes, and emojis stripped from them. This is done to simplify the display to simple text only. 
 
-The choice of displayed tweets can either be a user's timeline, a user's list or the results of an HashTag search (i.e. #twitter). By default the timeline will show the timeline for the user for whom the API access keys will generated. Setting the username in the config will confirm the user.
+The choice of displayed tweets can either be a user's timeline, a user's list or the results of an text or HashTag search (i.e. twitter or #twitter). By default the timeline will show the timeline for the user for whom the API access keys will generated. Setting the username in the config will confirm the user.
 
 There are many configuration options controlling which, how many, how often, etc, tweets are shown and used, so please read through those that are available.
 
@@ -91,13 +91,13 @@ The following properties can be configured:
 		</tr>			
 		<tr>
 			<td><code>screenName</code></td>
-			<td>Should be set to either a) your username if you want to show your TIMELINE or one of your user lists, b) another username if accessing one of their user lists or c) the HashTag (exclude the #) that you want to search for (i.e twitter)<br>
+			<td>Should be set to either a) your username if you want to show your TIMELINE or one of your user lists, b) another username if accessing one of their user lists or c) the HashTag or text that you want to search for (i.e twitter or #twitter) Multiple words can be included separated by OR or AND. The operands need to have spaces either side of them<br>
 			<br>This value is <b>REQUIRED</b>
 			</td>
 		</tr>	
 		<tr>
 			<td><code>listToShow</code></td>
-			<td>Should be set to either a) 'TIMELINE', if you want to show your timeline, b) 'LISTNAME', the stub name of one of your user lists or another user's user lists or c) 'SEARCH' to carry out a HashTag search on all recent posts. This is configured tightly with the above <code>screenName</code> configuratoin option so set accordingly.<br>
+			<td>Should be set to either a) 'TIMELINE', if you want to show your timeline, b) 'LISTNAME', the stub name of one of your user lists or another user's user lists or c) 'SEARCH' to carry out a test or HashTag search on all recent posts. This is configured tightly with the above <code>screenName</code> configuration option so set accordingly.<br>
 			<br>This value is <b>REQUIRED</b>
 			</td>
 		</tr>	
