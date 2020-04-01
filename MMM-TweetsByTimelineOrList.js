@@ -39,6 +39,7 @@ Module.register("MMM-TweetsByTimelineOrList", {
         maxTweetAgeMins: 360,
         allowSpecialCharacters: false,
         displayColors: ['#888', '#aaa',],
+        language: '', //leave empty and only use if requested
     },
     // the start function
     start: function () {
@@ -99,6 +100,7 @@ Module.register("MMM-TweetsByTimelineOrList", {
     },
     // gathers the current set of tweets from the full list to display
     getTweetsToShow: function () {
+        console.log("Tweetslistlength: " + this.tweetList.length);
         if (this.tweetList.length <= this.config.tweetsToShowAtATime)
             return this.tweetList;
         var indexStart = this.tweetIndex % this.tweetList.length;
@@ -149,6 +151,8 @@ Module.register("MMM-TweetsByTimelineOrList", {
         }
         var wrapper = document.createElement("table");
         var currentDisplayTweets = this.getTweetsToShow();
+
+        console.log(this.name + " #### display.length " + currentDisplayTweets.length);
         for (var cIndex = 0; cIndex < currentDisplayTweets.length; cIndex++) {
             var tweet = currentDisplayTweets[cIndex];
             var colorValue = "color:" +

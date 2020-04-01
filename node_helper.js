@@ -109,43 +109,44 @@ module.exports = NodeHelper.create({
             // set flag to assume inclusion of this tweet
             var doInclude = true;
 
+            var debugParams = false;
 
             // if set to exclude quote and has a quote, exclude
             if (theConfig.excludeTweetsWithQuotes && cIsQuoteStatus)
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 1" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 1" + doInclude) };
             // if set to exclude retweets and is a retweet, exclude
             if (theConfig.excludeRetweets && cIsRetweeted)
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 2" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 2" + doInclude) };
             // if set to exclude tweets with media has media, exclude
             if (theConfig.excludeMediaTweets && cHasMedia)
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 3" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 3" + doInclude) };
             // if set to exclude tweets with links and has a link, exclude
             if (theConfig.excludeLinkTweets && cHasURLs)
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 4" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 4" + doInclude) };
             // if set to exclude short tweets and is short, exclude
             if ((theConfig.excludeTweetLengthLessThan > 0) &&
                 (cText.length < theConfig.excludeTweetLengthLessThan))
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 5" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 5" + doInclude) };
             // if set to limit tweets per user check if exceeds that amount, exclude
             if ((theConfig.maxTweetsPerUser > 0) &&
                 (cUserTweetCount > theConfig.maxTweetsPerUser))
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 6" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 6" + doInclude) };
             // if set to tweet age is set and greater than that, exclude
             if ((theConfig.maxTweetAgeMins > 0) &&
                 (cTweetAgeMins > theConfig.maxTweetAgeMins))
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 7" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 7" + doInclude) };
             // if set to check for certain text matches, exclude those that don't
             if ((theConfig.excludeTweetsWithoutText.length > 0) &&
                 (this.doesNotHaveRequiredText(cText, theConfig)))
                 doInclude = false;
-            //console.log(this.name + " #### doInclude 8" + doInclude); 
+            if (debugParams) { console.log(this.name + " #### doInclude 8" + doInclude) };
 
             // if not included for some reason, include it
             if (doInclude) {
@@ -192,11 +193,23 @@ module.exports = NodeHelper.create({
 
         // if no list name or timeline, set for timeline get
         if ((theConfig.listToShow.toUpperCase() === 'SEARCH')) {
+            var languageParam = '';
+            if (!theConfig.language == '') {
+                params = {
+                    q: theConfig.screenName,
+                    count: theConfig.totalTweetsPerUpdate,
+                    lang: theConfig.language,
+                }
+            }
+            else {
+                params = {
+                    q: theConfig.screenName,
+                    count: theConfig.totalTweetsPerUpdate
+                }
+            }
             query = 'search/tweets';
-            params = {
-                q: theConfig.screenName,
-                count: theConfig.totalTweetsPerUpdate
-            };
+
+            ;
         }
         else {
             // otherwise get a named list
@@ -219,8 +232,13 @@ module.exports = NodeHelper.create({
         }
         // call twitter client based on query and params
 
+
         client.get(query, params, function (error, tweets, response) {
             // if no error, send tweets for processing
+
+            console.log("-----------------");
+            console.log(client);
+            console.log(query, params);
 
             if (!error) {
 

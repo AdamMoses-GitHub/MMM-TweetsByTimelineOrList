@@ -10,7 +10,7 @@ Example:
 This module requires the use of the `twitter` and `bad-words` packages for node.js. To install them, please run:
 
 ```
-npm install twitter 
+npm install twitter
 npm install bad-words
 ```
 
@@ -236,7 +236,16 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>[ '#888', '#aaa', ]</code> (darker grey, lighter grey)
 				<br>This value is <b>OPTIONAL</b>
 			</td>
-		</tr>		
+		</tr>	
+		<tr>
+			<td><code>language</code></td>
+			<td>The language of the tweets to request. language must be <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" >ISO_639-1</a> compliant<br>
+				<br><b>Example:</b> <code>'en' or 'pl'</code>
+				<br><b>Default value:</b> <code>'#'</code> <b> No language checking</b>
+				<br>This value is <b>OPTIONAL</b>
+				<br>This value is only used when a SEARCH is made
+			</td>
+		</tr>	
 		<tr>
 			<td><code>filterBadWords</code></td>
 			<td>Defaults to `false`.  When set to `true`, objectionable words are replaced with asterisks for a more child-friendly display.</td>
